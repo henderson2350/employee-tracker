@@ -102,6 +102,10 @@ function addEmployee() {
           "Web Developer",
           "Software Engineer",
           "Salesperson",
+          "Legal Team Lead",
+          "Account Manager",
+          "Sales Lead",
+          "Lead Engineer"
         ], //going too need to put all of the roles from the db in here as the choices
       },
     ])
@@ -138,6 +142,22 @@ function addEmployee() {
 
         case "Salesperson":
           var role_id = 6;
+          break;
+        
+        case "Legal Team Lead":
+          var role_id = 15;
+          break;
+        
+        case "Account Manager":
+          var role_id = 14;
+          break;
+        
+        case "Lead Engineer":
+          var role_id = 13;
+          break;
+        
+        case "Sales Lead":
+          var role_id = 12;
           break;
 
         default:
@@ -262,7 +282,7 @@ function viewAllEmployees() {
   let query =
     "SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name FROM employee INNER JOIN role ON (employee.role_id = role.id) INNER JOIN department ON (role.department_id = department.id)";
   connection.query(query, (err, res) => {
-    console.log(res);
+    console.table(res);
   });
 }
 
@@ -282,7 +302,7 @@ function viewByDepartment() {
       role.salary, department.name FROM employee INNER JOIN role ON (employee.role_id = role.id) 
       INNER JOIN department ON (role.department_id = department.id) WHERE name = ?`, answer.department, (err, res) => {
         if (err) throw err
-        console.log(res)
+        console.table(res)
       })
     })
 }
@@ -290,13 +310,13 @@ function viewByDepartment() {
 function viewRoles() {
   connection.query("SELECT * FROM role", (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
 }
 
 function viewDepartments() {
   connection.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
 }

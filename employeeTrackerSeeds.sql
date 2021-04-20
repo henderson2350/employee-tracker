@@ -36,6 +36,9 @@ VALUE ("Marketer", "60000", 2)
 INSERT INTO role(title, salary, department_id)
 VALUE ("Web Developer", "150000", 1);
 
+INSERT INTO role(title, salary, department_id)
+VALUE ("Manager", "500,0000", 1);
+
 INSERT INTO employee(first_name, last_name, role_id)
 VALUE ("Clare", "Henderson", 8);
 
