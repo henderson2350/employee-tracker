@@ -1,7 +1,7 @@
 {
   "name": "employee-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description This project creates a an organization system for employees. Using the command line, the user answers prompts, adding employees and assigning them roles and departments. The user can also assign managers to employees. The user can view all employees in the company, as well as by manager or by department. The user can remove employees if need be. Link to demonstration video: https://drive.google.com/file/d/1kKAOqQnOVReeD9tWY2CY0oGnEcIgUFXv/view",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,8 @@
     "inquirer": "^8.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
-    "sql": "^0.78.0"
-  }
+    "sql": "^0.78.0",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {}
 }

@@ -327,7 +327,7 @@ function updateEmployeeManager() {
 
 function viewAllEmployees() {
   let query =
-    "SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name,' ', m.last_name) FROM employee e LEFT JOIN role ON e.role_id=role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee m ON m.id = e.manager_id";
+    "SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name,' ', m.last_name) AS Manager FROM employee e LEFT JOIN role ON e.role_id=role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee m ON m.id = e.manager_id";
   connection.query(query, (err, res) => {
     console.table(res);
     start()
@@ -352,8 +352,7 @@ function viewByDepartment() {
     ])
     .then((answer) => {
       connection.query(
-        `SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name," ", m.last_name) 
-        FROM employee e LEFT JOIN role ON e.role_id=role.id 
+        `SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name," ", m.last_name) AS manager FROM employee e LEFT JOIN role ON e.role_id=role.id 
         LEFT JOIN department ON role.department_id = department.id 
         LEFT JOIN employee m ON m.id = e.manager_id
         WHERE department.name = ?`,
@@ -391,7 +390,7 @@ function viewByManager() {
       var nameArray = fullName2.split(" ")
       values = [nameArray[0], nameArray[1]]
       connection.query(`SELECT id FROM employee WHERE first_name = ? AND last_name = ?`, values, (err, res) => {
-        connection.query(`SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name," ", m.last_name) 
+        connection.query(`SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name," ", m.last_name) AS manager 
         FROM employee e LEFT JOIN role ON e.role_id=role.id 
         LEFT JOIN department ON role.department_id = department.id 
         LEFT JOIN employee m ON m.id = e.manager_id
