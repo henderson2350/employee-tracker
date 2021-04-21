@@ -132,6 +132,7 @@ function addEmployee() {
             );
           }
         );
+        start()
       });
   });
 }
@@ -175,6 +176,7 @@ function addRole() {
               (err, res) => {
                 if (err) throw err;
                 console.log("Role added!");
+                start()
               }
             );
           }
@@ -212,6 +214,7 @@ function removeEmployee() {
               [res[i].first_name, res[i].last_name],
               (err, res) => {
                 if (err) throw err;
+                start()
               }
             );
           }
@@ -259,6 +262,7 @@ function updateRole() {
           values, (err, res) => {
             if (err) throw err
             console.log("Employee role updated!")
+            start()
           })
         })
       })
@@ -312,6 +316,7 @@ function updateEmployeeManager() {
           values2 = [res[0].id, nameArray3[0], nameArray3[1]]
           connection.query(`UPDATE employee SET manager_id = ? WHERE first_name = ? AND last_name = ?`, values2, (err, res) => {
             console.log("Employee Manager Updated!")
+            start()
           })
         }
         )
@@ -325,6 +330,7 @@ function viewAllEmployees() {
     "SELECT e.id, e.first_name, e.last_name, role.title, department.name, role.salary, CONCAT(m.first_name,' ', m.last_name) FROM employee e LEFT JOIN role ON e.role_id=role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee m ON m.id = e.manager_id";
   connection.query(query, (err, res) => {
     console.table(res);
+    start()
   });
 }
 
@@ -355,8 +361,10 @@ function viewByDepartment() {
         (err, res) => {
           if (err) throw err;
           console.table(res);
+          start()
         }
       );
+      
     });
   })
 }
@@ -389,10 +397,14 @@ function viewByManager() {
         LEFT JOIN employee m ON m.id = e.manager_id
         WHERE e.manager_id = ?`, res[0].id, (err, res) => {
           console.table(res)
+          start()
         })
       })
       })
+      
     })
+    
+    
   }
   
 
@@ -401,13 +413,17 @@ function viewRoles() {
   connection.query("SELECT * FROM role", (err, res) => {
     if (err) throw err;
     console.table(res);
+    start()
   });
+  
 }
 
 function viewDepartments() {
   connection.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
     console.table(res);
+    start()
   });
+  
 }
 
