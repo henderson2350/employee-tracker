@@ -1,7 +1,7 @@
 # Employee Tracker System
 
 ## Description
-This project creates a an organization system for employees. Using the command line, the user answers prompts, adding employees and assigning them roles and departments. The user can also assign managers to employees. The user can view all employees in the company, as well as by manager or by department. The user can remove employees if need be.  
+This project creates a an organization system for employees. Using the command line, the user answers prompts, adding employees and assigning them roles and departments. The user can also assign managers to employees. The user can view all employees in the company, as well as by manager or by department. The user can remove employees if need be. Link to demonstration video: https://drive.google.com/file/d/1kKAOqQnOVReeD9tWY2CY0oGnEcIgUFXv/view
 
 ## Table of Contents
 1. [Installation](#installation)
